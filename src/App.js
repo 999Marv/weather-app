@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import Card from "./components/Card";
 import Header from "./layout/Header";
+import Items from "./components/Items";
 
 function App() {
   return (
     <Fragment>
       <Header />
-      <Card />
+      <Items />
     </Fragment>
   );
 }
