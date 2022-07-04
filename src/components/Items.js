@@ -1,5 +1,6 @@
 import classes from "./Items.module.css";
 import Card from "./Card";
+import Form from "./Form";
 
 const Items = (props) => {
   return (
@@ -7,9 +8,7 @@ const Items = (props) => {
       <div className={classes.container}>
         <h1>location</h1> <h3>date</h3>
       </div>
-      <form>
-        <input type="text" />
-      </form>
+      <Form />
       <div>current weather</div>
       <div>Bunch of descriptions</div>
       <div>
