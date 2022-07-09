@@ -6,11 +6,11 @@ function App() {
   async function fetchWeather(city) {
     try {
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=03c1d3c5a4e6b179f8fc88ec3235800a`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`
       );
 
       const data = await res.json();
-      console.log(data.main.temp);
+      console.log(data.main);
     } catch (error) {
       console.log(error.message);
     }
