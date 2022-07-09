@@ -1,8 +1,25 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Header from "./layout/Header";
 import Items from "./components/Items";
+import Form from "./components/Form";
 
 function App() {
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState({
+    current: "",
+    minDegree: "",
+    maxDegree: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCity("");
+  };
+
+  const farenheit = (num) => {
+    return (1.8 * (num - 273) + 32).toFixed(0);
+  };
+
   async function fetchWeather(city) {
     try {
       const res = await fetch(
@@ -10,7 +27,12 @@ function App() {
       );
 
       const data = await res.json();
-      console.log(data.main.temp);
+
+      setWeather({
+        current: farenheit(data.main.temp),
+        minDegree: farenheit(data.main.temp_min),
+        maxDegree: farenheit(data.main.temp_max),
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -21,8 +43,18 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <Items date={date} onClickButton={() => fetchWeather("brooklyn")} />
-      {/* <button onClick={() => fetchWeather("London")}>hh</button> */}
+      <Form
+        submitHandler={handleSubmit}
+        changeHandler={(e) => setCity(e.target.value)}
+        clickHandler={() => fetchWeather(city)}
+        giveValue={city}
+      />
+      <Items
+        date={date}
+        current={weather.current}
+        minDegree={weather.minDegree}
+        maxDegree={weather.maxDegree}
+      />
     </Fragment>
   );
 }
