@@ -7,7 +7,6 @@ const Items = (props) => {
       <div className={classes.container}>
         <h1>{props.location}</h1> <h3>{props.date}</h3>
       </div>
-      {/* <Form /> */}
       <div>{props.current}°F</div>
       <div>
         The high will be {props.maxDegree}°F. The low will be {props.minDegree}

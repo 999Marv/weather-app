@@ -6,6 +6,7 @@ import Form from "./components/Form";
 function App() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState({
+    location: "",
     current: "",
     minDegree: "",
     maxDegree: "",
@@ -29,6 +30,7 @@ function App() {
       const data = await res.json();
 
       setWeather({
+        location: data.name,
         current: farenheit(data.main.temp),
         minDegree: farenheit(data.main.temp_min),
         maxDegree: farenheit(data.main.temp_max),
@@ -50,6 +52,7 @@ function App() {
         giveValue={city}
       />
       <Items
+        location={weather.location}
         date={date}
         current={weather.current}
         minDegree={weather.minDegree}
