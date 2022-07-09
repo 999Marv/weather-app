@@ -10,16 +10,19 @@ function App() {
       );
 
       const data = await res.json();
-      console.log(data.main);
+      console.log(data.main.temp);
     } catch (error) {
       console.log(error.message);
     }
   }
 
+  const date = new Date().toLocaleDateString();
+
   return (
     <Fragment>
       <Header />
-      <Items />
+      <Items date={date} onClickButton={() => fetchWeather("brooklyn")} />
+      {/* <button onClick={() => fetchWeather("London")}>hh</button> */}
     </Fragment>
   );
 }
