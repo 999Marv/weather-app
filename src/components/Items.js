@@ -1,18 +1,40 @@
 import classes from "./Items.module.css";
-import Card from "./Card";
 
 const Items = (props) => {
   return (
-    <Card className={classes.main}>
-      <div className={classes.container}>
-        <h1>{props.location}</h1> <h3>{props.date}</h3>
+    <main className={classes.container}>
+      <div className={classes.sec}>
+        <h2>{props.location}</h2>
+        <h3>{props.date}</h3>
       </div>
-      <div>{props.current}°F</div>
-      <div>
-        The high will be {props.maxDegree}°F. The low will be {props.minDegree}
-        °F
+      <div className={classes.third}>
+        <div className={classes.u}>
+          <h3>
+            It is currently
+            <u> {props.current}°F</u>
+          </h3>
+          <h3>
+            The high will be
+            <u> {props.maxDegree}°F </u>
+          </h3>
+          <h3>
+            The low will be
+            <u> {props.minDegree} °F</u>
+          </h3>
+        </div>
+
+        <div className={classes.fourth}>
+          <h3>
+            Today has
+            <u> {props.description}</u>
+          </h3>
+          <h3>
+            Wind Speed
+            <u> {props.windSpeed}</u>
+          </h3>
+        </div>
       </div>
-    </Card>
+    </main>
   );
 };
 

@@ -1,7 +1,8 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Header from "./layout/Header";
 import Items from "./components/Items";
 import Form from "./components/Form";
+import Footer from "./layout/Footer";
 
 function App() {
   const [city, setCity] = useState("");
@@ -10,6 +11,8 @@ function App() {
     current: "",
     minDegree: "",
     maxDegree: "",
+    description: "",
+    windSpeed: "",
   });
 
   const handleSubmit = (e) => {
@@ -29,11 +32,15 @@ function App() {
 
       const data = await res.json();
 
+      console.log(data);
+
       setWeather({
         location: data.name,
         current: farenheit(data.main.temp),
         minDegree: farenheit(data.main.temp_min),
         maxDegree: farenheit(data.main.temp_max),
+        description: data.weather[0].description,
+        windSpeed: data.wind.speed,
       });
     } catch (error) {
       console.log(error.message);
@@ -43,7 +50,7 @@ function App() {
   const date = new Date().toLocaleDateString();
 
   return (
-    <Fragment>
+    <>
       <Header />
       <Form
         submitHandler={handleSubmit}
@@ -57,8 +64,11 @@ function App() {
         current={weather.current}
         minDegree={weather.minDegree}
         maxDegree={weather.maxDegree}
+        description={weather.description}
+        windSpeed={weather.windSpeed}
       />
-    </Fragment>
+      <Footer />
+    </>
   );
 }
 

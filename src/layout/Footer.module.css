@@ -1,0 +1,11 @@
+.container {
+  text-align: center;
+  border-top-style: groove;
+  padding-top: 2rem;
+}
+
+.a {
+  text-decoration: none;
+  color: #eb6e4c;
+  border: 20px;
+}

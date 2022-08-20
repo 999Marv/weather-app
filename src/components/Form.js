@@ -1,15 +1,20 @@
-import "./Form.module.css";
+import classes from "./Form.module.css";
 
 const Form = (props) => {
   return (
-    <form onSubmit={props.submitHandler}>
-      <input
-        type="text"
-        value={props.giveValue}
-        onChange={props.changeHandler}
-      />
-      <button onClick={props.clickHandler}>Search</button>
-    </form>
+    <div className={classes.container}>
+      <form onSubmit={props.submitHandler}>
+        <input
+          className={classes.form}
+          type="text"
+          value={props.giveValue}
+          onChange={props.changeHandler}
+        />
+        <button className={classes.btn} onClick={props.clickHandler}>
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
 
